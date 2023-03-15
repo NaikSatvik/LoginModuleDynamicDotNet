@@ -1,19 +1,17 @@
-/*
-CREATE TABLE userMaster (
-    userId INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
-	accNumber VARCHAR(20) NOT NULL,
-	accBalance VARCHAR(20) NOT NULL,
-    pin binary(50) NOT NULL,
-	fname VARCHAR(20) NOT NULL,
-	lname VARCHAR(20) NOT NULL,
-	email VARCHAR(50) NOT NULL,
-	mobile VARCHAR(10) NOT NULL,
-	gender VARCHAR(10) NOT NULL,
-	address VARCHAR(100) NOT NULL,
-    createdAt DATETIME NULL,
-	lastModified DATETIME NULL
-);
-*/
+--CREATE TABLE userMaster (
+--    userId INT IDENTITY(1,1) PRIMARY KEY NOT NULL,
+--	accNumber VARCHAR(20) NOT NULL,
+--	accBalance VARCHAR(20) NOT NULL,
+--    pin binary(50) NOT NULL,
+--	fname VARCHAR(20) NOT NULL,
+--	lname VARCHAR(20) NOT NULL,
+--	email VARCHAR(50) NOT NULL,
+--	mobile VARCHAR(10) NOT NULL,
+--	gender VARCHAR(10) NOT NULL,
+--	address VARCHAR(100) NOT NULL,
+--    createdAt DATETIME NULL,
+--	lastModified DATETIME NULL
+--);
 
 /*
 INSERT INTO userMaster (accNumber, accBalance, pin, fname, lname, email, mobile, gender, address, createdAt, lastModified)

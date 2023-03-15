@@ -10,13 +10,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using BankDynamic;
 
 namespace LoginRegister
 {
     public partial class app : Form
     {
+        // global variables
+        public int userId;
+
         #region SQL
-        public static string ConnectionString = @"Data Source = DESKTOP-4VH316L\SQLEXPRESS; Initial Catalog=Bank; Integrated Security=True";
+        //public static string ConnectionString = @"Data Source = DESKTOP-4VH316L\SQLEXPRESS; Initial Catalog=Bank; Integrated Security=True";
+
+        public static string ConnectionString = @"Data Source = SATVIKNAIK\SQLEXPRESS; Initial Catalog=Bank; Integrated Security=True";
 
         SqlConnection cnn = new SqlConnection(ConnectionString);
         #endregion
@@ -29,6 +35,7 @@ namespace LoginRegister
             confPassword.PasswordChar = '*';
         }
 
+        // compute hash code SHA-256
         public static string ComputeSha256Hash(string rawData)
         {
             // Create a SHA256   
@@ -220,6 +227,7 @@ namespace LoginRegister
             }
         }
 
+        // switch to register tab
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Tab.SelectedIndex = 1;
@@ -234,14 +242,13 @@ namespace LoginRegister
             }
             else
             {
-                string chkAccNum = "select fname from userMaster where accNumber = @accNumber and pin = CONVERT(binary(50),@pin)";
+                string chkAccNum = "select userId from userMaster where accNumber = @accNumber and pin = CONVERT(binary(50),@pin)";
                 try
                 {
                     cnn.Open();
                     SqlCommand command = new SqlCommand(chkAccNum, cnn);
                     command.Parameters.AddWithValue("@accNumber", this.lgnAccNum.Text);
                     command.Parameters.AddWithValue("@pin", ComputeSha256Hash(this.lgnPassword.Text));
-
                     SqlDataReader dr = command.ExecuteReader();
 
                     if (dr.HasRows)
@@ -251,7 +258,8 @@ namespace LoginRegister
                             lgnAccNum.Clear();
                             lgnPassword.Clear();
                             this.lgnAckBox.Text = "";
-                            MessageBox.Show("{0}", dr.GetString(0));
+                            userId = dr.GetInt32(0);
+                            landingForm.ActiveForm.Show();
                         }
                     }
                     else

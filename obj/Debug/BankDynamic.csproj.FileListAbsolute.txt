@@ -1,0 +1,10 @@
+C:\Users\BAPS\source\repos\BankDynamic\bin\Debug\BankDynamic.exe.config
+C:\Users\BAPS\source\repos\BankDynamic\bin\Debug\BankDynamic.exe
+C:\Users\BAPS\source\repos\BankDynamic\bin\Debug\BankDynamic.pdb
+C:\Users\BAPS\source\repos\BankDynamic\obj\Debug\BankDynamic.csproj.AssemblyReference.cache
+C:\Users\BAPS\source\repos\BankDynamic\obj\Debug\BankDynamic.Properties.Resources.resources
+C:\Users\BAPS\source\repos\BankDynamic\obj\Debug\BankDynamic.csproj.GenerateResource.cache
+C:\Users\BAPS\source\repos\BankDynamic\obj\Debug\BankDynamic.csproj.CoreCompileInputs.cache
+C:\Users\BAPS\source\repos\BankDynamic\obj\Debug\BankDynamic.exe
+C:\Users\BAPS\source\repos\BankDynamic\obj\Debug\BankDynamic.pdb
+C:\Users\BAPS\source\repos\BankDynamic\obj\Debug\LoginRegister.app.resources

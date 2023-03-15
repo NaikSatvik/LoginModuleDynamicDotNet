@@ -9,6 +9,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace LoginRegister
 {
@@ -26,6 +27,24 @@ namespace LoginRegister
             lgnPassword.PasswordChar = '*';
             password.PasswordChar = '*';
             confPassword.PasswordChar = '*';
+        }
+
+        public static string ComputeSha256Hash(string rawData)
+        {
+            // Create a SHA256   
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // ComputeHash - returns byte array  
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                // Convert byte array to a string   
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
         }
 
         #region User Validations
@@ -159,15 +178,15 @@ namespace LoginRegister
                     Console.WriteLine(now.ToLocalTime());
                     password = this.password.Text;
                     String insertUser = "INSERT INTO userMaster (accNumber, accBalance, pin, fname, lname, email, mobile, gender, address, createdAt, lastModified)" +
-                        "VALUES (@accNumber,@accBalance,@pin,@fname,@lname,@email,@mobile,@gender,@address,@createdAt,@lastModified)";
-
+                        "VALUES (@accNumber,@accBalance,CONVERT(binary(50), @pin),@fname,@lname,@email,@mobile,@gender,@address,@createdAt,@lastModified)";
+                    
                     try
                     {
                         cnn.Open();
                         SqlCommand command = new SqlCommand(insertUser, cnn);
                         command.Parameters.AddWithValue("@accNumber", this.accNum.Text);
                         command.Parameters.AddWithValue("@accBalance", "0");
-                        command.Parameters.AddWithValue("@pin", this.password.Text);
+                        command.Parameters.AddWithValue("@pin", ComputeSha256Hash(password));
                         command.Parameters.AddWithValue("@fname", this.fname.Text);
                         command.Parameters.AddWithValue("@lname", this.lname.Text);
                         command.Parameters.AddWithValue("@email", this.email.Text);
@@ -209,37 +228,47 @@ namespace LoginRegister
         // login btn click event
         private void lgnBtn_Click(object sender, EventArgs e)
         {
-            /*if (c == 0)
-            {
-                this.lgnAckBox.Text = "Sorry user dosen't exists.";
-            }
-            else if (String.IsNullOrEmpty(this.lgnUsername.Text) == true || String.IsNullOrEmpty(this.lgnPassword.Text) == true)
+            if (String.IsNullOrEmpty(this.lgnAccNum.Text) == true || String.IsNullOrEmpty(this.lgnPassword.Text) == true)
             {
                 this.lgnAckBox.Text = "Please enter username & password.";
             }
             else
             {
-                for (int i=0;i<c;i++)
+                string chkAccNum = "select fname from userMaster where accNumber = @accNumber and pin = CONVERT(binary(50),@pin)";
+                try
                 {
-                    if (String.Compare(this.lgnUsername.Text,user[i].Username) == 0)
+                    cnn.Open();
+                    SqlCommand command = new SqlCommand(chkAccNum, cnn);
+                    command.Parameters.AddWithValue("@accNumber", this.lgnAccNum.Text);
+                    command.Parameters.AddWithValue("@pin", ComputeSha256Hash(this.lgnPassword.Text));
+
+                    SqlDataReader dr = command.ExecuteReader();
+
+                    if (dr.HasRows)
                     {
-                        if (String.Compare(this.lgnUsername.Text, user[i].Username) == 0 && String.Compare(this.lgnPassword.Text, user[i].Password) == 0)
+                        while (dr.Read())
                         {
-                            this.lgnAckBox.Text = "";
-                            MessageBox.Show("Welcome " + lgnUsername);
-                            lgnUsername.Clear();
+                            lgnAccNum.Clear();
                             lgnPassword.Clear();
-                            break;
-                        } else
-                        {
-                            this.lgnAckBox.Text = "Incorrect Password";
-                        }    
-                    } else
+                            this.lgnAckBox.Text = "";
+                            MessageBox.Show("{0}", dr.GetString(0));
+                        }
+                    }
+                    else
                     {
                         this.lgnAckBox.Text = "Sorry user dosen't exists.";
                     }
                 }
-            }*/
+                catch (SqlException ex)
+                {
+                    this.ackRegisterMsg.Text = "Error fetching data from Database!";
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    cnn.Close();
+                }
+            }
         }
     }
 }

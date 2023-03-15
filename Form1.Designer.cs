@@ -37,7 +37,7 @@ namespace LoginRegister
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.lgnBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.lgnUsername = new System.Windows.Forms.RichTextBox();
+            this.lgnAccNum = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.registrationTab = new System.Windows.Forms.TabPage();
             this.label = new System.Windows.Forms.Label();
@@ -87,7 +87,7 @@ namespace LoginRegister
             this.loginTab.Controls.Add(this.linkLabel1);
             this.loginTab.Controls.Add(this.lgnBtn);
             this.loginTab.Controls.Add(this.label2);
-            this.loginTab.Controls.Add(this.lgnUsername);
+            this.loginTab.Controls.Add(this.lgnAccNum);
             this.loginTab.Controls.Add(this.label1);
             this.loginTab.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginTab.Location = new System.Drawing.Point(4, 22);
@@ -160,15 +160,15 @@ namespace LoginRegister
             this.label2.TabIndex = 10;
             this.label2.Text = "Password";
             // 
-            // lgnUsername
+            // lgnAccNum
             // 
-            this.lgnUsername.BackColor = System.Drawing.SystemColors.Info;
-            this.lgnUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lgnUsername.Location = new System.Drawing.Point(152, 184);
-            this.lgnUsername.Name = "lgnUsername";
-            this.lgnUsername.Size = new System.Drawing.Size(167, 28);
-            this.lgnUsername.TabIndex = 9;
-            this.lgnUsername.Text = "";
+            this.lgnAccNum.BackColor = System.Drawing.SystemColors.Info;
+            this.lgnAccNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lgnAccNum.Location = new System.Drawing.Point(152, 184);
+            this.lgnAccNum.Name = "lgnAccNum";
+            this.lgnAccNum.Size = new System.Drawing.Size(167, 28);
+            this.lgnAccNum.TabIndex = 9;
+            this.lgnAccNum.Text = "";
             // 
             // label1
             // 
@@ -464,7 +464,7 @@ namespace LoginRegister
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Button lgnBtn;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RichTextBox lgnUsername;
+        private System.Windows.Forms.RichTextBox lgnAccNum;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage registrationTab;
         private System.Windows.Forms.Label label5;

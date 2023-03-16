@@ -445,7 +445,7 @@ namespace LoginRegister
             this.ClientSize = new System.Drawing.Size(419, 519);
             this.Controls.Add(this.Tab);
             this.Name = "app";
-            this.Text = "Application";
+            this.Text = "Bank";
             this.Tab.ResumeLayout(false);
             this.loginTab.ResumeLayout(false);
             this.loginTab.PerformLayout();

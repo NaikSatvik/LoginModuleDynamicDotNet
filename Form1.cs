@@ -16,13 +16,10 @@ namespace LoginRegister
 {
     public partial class app : Form
     {
-        // global variables
-        public int userId;
-
         #region SQL
-        //public static string ConnectionString = @"Data Source = DESKTOP-4VH316L\SQLEXPRESS; Initial Catalog=Bank; Integrated Security=True";
+        public static string ConnectionString = @"Data Source = DESKTOP-4VH316L\SQLEXPRESS; Initial Catalog=Bank; Integrated Security=True";
 
-        public static string ConnectionString = @"Data Source = SATVIKNAIK\SQLEXPRESS; Initial Catalog=Bank; Integrated Security=True";
+        // public static string ConnectionString = @"Data Source = SATVIKNAIK\SQLEXPRESS; Initial Catalog=Bank; Integrated Security=True";
 
         SqlConnection cnn = new SqlConnection(ConnectionString);
         #endregion
@@ -182,7 +179,7 @@ namespace LoginRegister
                 else if (String.Compare(this.password.Text, this.confPassword.Text) == 0)
                 {
                     DateTime now = DateTime.Now;
-                    Console.WriteLine(now.ToLocalTime());
+                    // Console.WriteLine(now.ToLocalTime());
                     password = this.password.Text;
                     String insertUser = "INSERT INTO userMaster (accNumber, accBalance, pin, fname, lname, email, mobile, gender, address, createdAt, lastModified)" +
                         "VALUES (@accNumber,@accBalance,CONVERT(binary(50), @pin),@fname,@lname,@email,@mobile,@gender,@address,@createdAt,@lastModified)";
@@ -258,14 +255,15 @@ namespace LoginRegister
                             lgnAccNum.Clear();
                             lgnPassword.Clear();
                             this.lgnAckBox.Text = "";
-                            userId = dr.GetInt32(0);
-                            landingForm.ActiveForm.Show();
+                            int userId = dr.GetInt32(0);
+                            // Console.WriteLine(userId);
+                            landingForm lForm = new landingForm();
+                            lForm.userId = userId;
+                            lForm.ShowDialog();
                         }
                     }
                     else
-                    {
                         this.lgnAckBox.Text = "Sorry user dosen't exists.";
-                    }
                 }
                 catch (SqlException ex)
                 {

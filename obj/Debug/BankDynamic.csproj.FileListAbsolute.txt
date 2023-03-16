@@ -19,3 +19,4 @@ C:\Users\Satvik Naik\source\repos\LoginModuleDynamicDotNet\obj\Debug\BankDynamic
 C:\Users\Satvik Naik\source\repos\LoginModuleDynamicDotNet\obj\Debug\BankDynamic.exe
 C:\Users\Satvik Naik\source\repos\LoginModuleDynamicDotNet\obj\Debug\BankDynamic.pdb
 C:\Users\Satvik Naik\source\repos\LoginModuleDynamicDotNet\obj\Debug\BankDynamic.landingForm.resources
+C:\Users\BAPS\source\repos\BankDynamic\obj\Debug\BankDynamic.landingForm.resources

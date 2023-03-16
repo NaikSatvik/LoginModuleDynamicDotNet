@@ -30,11 +30,9 @@ namespace BankDynamic
         private void InitializeComponent()
         {
             this.landingTab = new System.Windows.Forms.TabControl();
-            this.hashTab = new System.Windows.Forms.TabPage();
+            this.accDetailsTab = new System.Windows.Forms.TabPage();
             this.viewEditProfileTab = new System.Windows.Forms.TabPage();
             this.welcomeMsg = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.viewAccNum = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.viewEmail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,13 +47,19 @@ namespace BankDynamic
             this.viewAddress = new System.Windows.Forms.TextBox();
             this.editProfileBtn = new System.Windows.Forms.Button();
             this.ackViewProfile = new System.Windows.Forms.Label();
+            this.logOut = new System.Windows.Forms.LinkLabel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.accDetAccNum = new System.Windows.Forms.TextBox();
+            this.balance = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.landingTab.SuspendLayout();
+            this.accDetailsTab.SuspendLayout();
             this.viewEditProfileTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // landingTab
             // 
-            this.landingTab.Controls.Add(this.hashTab);
+            this.landingTab.Controls.Add(this.accDetailsTab);
             this.landingTab.Controls.Add(this.viewEditProfileTab);
             this.landingTab.Location = new System.Drawing.Point(12, 26);
             this.landingTab.Name = "landingTab";
@@ -63,18 +67,23 @@ namespace BankDynamic
             this.landingTab.Size = new System.Drawing.Size(395, 481);
             this.landingTab.TabIndex = 0;
             // 
-            // hashTab
+            // accDetailsTab
             // 
-            this.hashTab.Location = new System.Drawing.Point(4, 22);
-            this.hashTab.Name = "hashTab";
-            this.hashTab.Padding = new System.Windows.Forms.Padding(3);
-            this.hashTab.Size = new System.Drawing.Size(387, 455);
-            this.hashTab.TabIndex = 0;
-            this.hashTab.Text = "#";
-            this.hashTab.UseVisualStyleBackColor = true;
+            this.accDetailsTab.BackColor = System.Drawing.Color.Silver;
+            this.accDetailsTab.Controls.Add(this.balance);
+            this.accDetailsTab.Controls.Add(this.label9);
+            this.accDetailsTab.Controls.Add(this.accDetAccNum);
+            this.accDetailsTab.Controls.Add(this.label8);
+            this.accDetailsTab.Location = new System.Drawing.Point(4, 22);
+            this.accDetailsTab.Name = "accDetailsTab";
+            this.accDetailsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.accDetailsTab.Size = new System.Drawing.Size(387, 455);
+            this.accDetailsTab.TabIndex = 0;
+            this.accDetailsTab.Text = "Account Details";
             // 
             // viewEditProfileTab
             // 
+            this.viewEditProfileTab.BackColor = System.Drawing.Color.Silver;
             this.viewEditProfileTab.Controls.Add(this.ackViewProfile);
             this.viewEditProfileTab.Controls.Add(this.editProfileBtn);
             this.viewEditProfileTab.Controls.Add(this.viewAddress);
@@ -83,21 +92,18 @@ namespace BankDynamic
             this.viewEditProfileTab.Controls.Add(this.viewFname);
             this.viewEditProfileTab.Controls.Add(this.viewMobile);
             this.viewEditProfileTab.Controls.Add(this.viewEmail);
-            this.viewEditProfileTab.Controls.Add(this.viewAccNum);
             this.viewEditProfileTab.Controls.Add(this.label7);
             this.viewEditProfileTab.Controls.Add(this.label6);
             this.viewEditProfileTab.Controls.Add(this.label5);
             this.viewEditProfileTab.Controls.Add(this.label4);
             this.viewEditProfileTab.Controls.Add(this.label3);
             this.viewEditProfileTab.Controls.Add(this.label2);
-            this.viewEditProfileTab.Controls.Add(this.label1);
             this.viewEditProfileTab.Location = new System.Drawing.Point(4, 22);
             this.viewEditProfileTab.Name = "viewEditProfileTab";
             this.viewEditProfileTab.Padding = new System.Windows.Forms.Padding(3);
             this.viewEditProfileTab.Size = new System.Drawing.Size(387, 455);
             this.viewEditProfileTab.TabIndex = 1;
             this.viewEditProfileTab.Text = "User Details";
-            this.viewEditProfileTab.UseVisualStyleBackColor = true;
             // 
             // welcomeMsg
             // 
@@ -110,31 +116,10 @@ namespace BankDynamic
             this.welcomeMsg.Size = new System.Drawing.Size(0, 13);
             this.welcomeMsg.TabIndex = 1;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 68);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Acc Num";
-            // 
-            // viewAccNum
-            // 
-            this.viewAccNum.BackColor = System.Drawing.SystemColors.Info;
-            this.viewAccNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.viewAccNum.Cursor = System.Windows.Forms.Cursors.No;
-            this.viewAccNum.Enabled = false;
-            this.viewAccNum.Location = new System.Drawing.Point(86, 65);
-            this.viewAccNum.Name = "viewAccNum";
-            this.viewAccNum.ReadOnly = true;
-            this.viewAccNum.Size = new System.Drawing.Size(251, 20);
-            this.viewAccNum.TabIndex = 1;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 94);
+            this.label2.Location = new System.Drawing.Point(16, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 2;
@@ -146,7 +131,7 @@ namespace BankDynamic
             this.viewEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.viewEmail.Cursor = System.Windows.Forms.Cursors.No;
             this.viewEmail.Enabled = false;
-            this.viewEmail.Location = new System.Drawing.Point(86, 91);
+            this.viewEmail.Location = new System.Drawing.Point(86, 70);
             this.viewEmail.Name = "viewEmail";
             this.viewEmail.ReadOnly = true;
             this.viewEmail.Size = new System.Drawing.Size(251, 20);
@@ -155,7 +140,7 @@ namespace BankDynamic
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 120);
+            this.label3.Location = new System.Drawing.Point(16, 99);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 4;
@@ -167,7 +152,7 @@ namespace BankDynamic
             this.viewMobile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.viewMobile.Cursor = System.Windows.Forms.Cursors.No;
             this.viewMobile.Enabled = false;
-            this.viewMobile.Location = new System.Drawing.Point(86, 117);
+            this.viewMobile.Location = new System.Drawing.Point(86, 96);
             this.viewMobile.Name = "viewMobile";
             this.viewMobile.ReadOnly = true;
             this.viewMobile.Size = new System.Drawing.Size(251, 20);
@@ -176,7 +161,7 @@ namespace BankDynamic
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 146);
+            this.label4.Location = new System.Drawing.Point(16, 125);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 13);
             this.label4.TabIndex = 6;
@@ -187,7 +172,7 @@ namespace BankDynamic
             this.viewFname.BackColor = System.Drawing.SystemColors.Info;
             this.viewFname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.viewFname.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.viewFname.Location = new System.Drawing.Point(86, 143);
+            this.viewFname.Location = new System.Drawing.Point(86, 122);
             this.viewFname.Name = "viewFname";
             this.viewFname.Size = new System.Drawing.Size(251, 20);
             this.viewFname.TabIndex = 7;
@@ -195,7 +180,7 @@ namespace BankDynamic
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 172);
+            this.label5.Location = new System.Drawing.Point(16, 151);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 13);
             this.label5.TabIndex = 8;
@@ -206,7 +191,7 @@ namespace BankDynamic
             this.viewLname.BackColor = System.Drawing.SystemColors.Info;
             this.viewLname.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.viewLname.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.viewLname.Location = new System.Drawing.Point(86, 169);
+            this.viewLname.Location = new System.Drawing.Point(86, 148);
             this.viewLname.Name = "viewLname";
             this.viewLname.Size = new System.Drawing.Size(251, 20);
             this.viewLname.TabIndex = 9;
@@ -214,7 +199,7 @@ namespace BankDynamic
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(16, 198);
+            this.label6.Location = new System.Drawing.Point(16, 177);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 13);
             this.label6.TabIndex = 10;
@@ -226,7 +211,7 @@ namespace BankDynamic
             this.viewGender.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.viewGender.Cursor = System.Windows.Forms.Cursors.No;
             this.viewGender.Enabled = false;
-            this.viewGender.Location = new System.Drawing.Point(86, 195);
+            this.viewGender.Location = new System.Drawing.Point(86, 174);
             this.viewGender.Name = "viewGender";
             this.viewGender.ReadOnly = true;
             this.viewGender.Size = new System.Drawing.Size(251, 20);
@@ -235,7 +220,7 @@ namespace BankDynamic
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(16, 224);
+            this.label7.Location = new System.Drawing.Point(16, 203);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 13);
             this.label7.TabIndex = 12;
@@ -246,7 +231,7 @@ namespace BankDynamic
             this.viewAddress.BackColor = System.Drawing.SystemColors.Info;
             this.viewAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.viewAddress.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.viewAddress.Location = new System.Drawing.Point(86, 221);
+            this.viewAddress.Location = new System.Drawing.Point(86, 200);
             this.viewAddress.Multiline = true;
             this.viewAddress.Name = "viewAddress";
             this.viewAddress.Size = new System.Drawing.Size(251, 116);
@@ -254,13 +239,14 @@ namespace BankDynamic
             // 
             // editProfileBtn
             // 
+            this.editProfileBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.editProfileBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editProfileBtn.Location = new System.Drawing.Point(86, 361);
+            this.editProfileBtn.Location = new System.Drawing.Point(86, 340);
             this.editProfileBtn.Name = "editProfileBtn";
             this.editProfileBtn.Size = new System.Drawing.Size(251, 42);
             this.editProfileBtn.TabIndex = 14;
             this.editProfileBtn.Text = "E D I T  P R O F I L E";
-            this.editProfileBtn.UseVisualStyleBackColor = true;
+            this.editProfileBtn.UseVisualStyleBackColor = false;
             this.editProfileBtn.Click += new System.EventHandler(this.editProfileBtn_Click);
             // 
             // ackViewProfile
@@ -272,17 +258,72 @@ namespace BankDynamic
             this.ackViewProfile.Size = new System.Drawing.Size(0, 13);
             this.ackViewProfile.TabIndex = 15;
             // 
+            // logOut
+            // 
+            this.logOut.AutoSize = true;
+            this.logOut.Location = new System.Drawing.Point(358, 10);
+            this.logOut.Name = "logOut";
+            this.logOut.Size = new System.Drawing.Size(45, 13);
+            this.logOut.TabIndex = 2;
+            this.logOut.TabStop = true;
+            this.logOut.Text = "Log Out";
+            this.logOut.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.logOut_LinkClicked);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(48, 68);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(51, 13);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Acc Num";
+            // 
+            // accDetAccNum
+            // 
+            this.accDetAccNum.BackColor = System.Drawing.SystemColors.Info;
+            this.accDetAccNum.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.accDetAccNum.Cursor = System.Windows.Forms.Cursors.No;
+            this.accDetAccNum.Enabled = false;
+            this.accDetAccNum.Location = new System.Drawing.Point(105, 65);
+            this.accDetAccNum.Name = "accDetAccNum";
+            this.accDetAccNum.Size = new System.Drawing.Size(228, 20);
+            this.accDetAccNum.TabIndex = 1;
+            // 
+            // balance
+            // 
+            this.balance.BackColor = System.Drawing.SystemColors.Info;
+            this.balance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.balance.Cursor = System.Windows.Forms.Cursors.No;
+            this.balance.Enabled = false;
+            this.balance.Location = new System.Drawing.Point(105, 103);
+            this.balance.Name = "balance";
+            this.balance.Size = new System.Drawing.Size(228, 20);
+            this.balance.TabIndex = 3;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(48, 106);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(46, 13);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Balance";
+            // 
             // landingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(419, 519);
+            this.Controls.Add(this.logOut);
             this.Controls.Add(this.welcomeMsg);
             this.Controls.Add(this.landingTab);
+            this.MaximizeBox = false;
             this.Name = "landingForm";
             this.Text = "Bank";
             this.Load += new System.EventHandler(this.landingForm_Load);
             this.landingTab.ResumeLayout(false);
+            this.accDetailsTab.ResumeLayout(false);
+            this.accDetailsTab.PerformLayout();
             this.viewEditProfileTab.ResumeLayout(false);
             this.viewEditProfileTab.PerformLayout();
             this.ResumeLayout(false);
@@ -293,7 +334,7 @@ namespace BankDynamic
         #endregion
 
         private System.Windows.Forms.TabControl landingTab;
-        private System.Windows.Forms.TabPage hashTab;
+        private System.Windows.Forms.TabPage accDetailsTab;
         private System.Windows.Forms.TabPage viewEditProfileTab;
         private System.Windows.Forms.Label welcomeMsg;
         private System.Windows.Forms.Button editProfileBtn;
@@ -303,14 +344,17 @@ namespace BankDynamic
         private System.Windows.Forms.TextBox viewFname;
         private System.Windows.Forms.TextBox viewMobile;
         private System.Windows.Forms.TextBox viewEmail;
-        private System.Windows.Forms.TextBox viewAccNum;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label ackViewProfile;
+        private System.Windows.Forms.LinkLabel logOut;
+        private System.Windows.Forms.TextBox accDetAccNum;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox balance;
+        private System.Windows.Forms.Label label9;
     }
 }

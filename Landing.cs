@@ -10,16 +10,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace BankDynamic
 {
     public partial class landingForm : Form
     {
         #region SQL
         public static string ConnectionString = @"Data Source = DESKTOP-4VH316L\SQLEXPRESS; Initial Catalog=Bank; Integrated Security=True";
-
         // public static string ConnectionString = @"Data Source = SATVIKNAIK\SQLEXPRESS; Initial Catalog=Bank; Integrated Security=True";
-
         SqlConnection cnn = new SqlConnection(ConnectionString);
         #endregion
 
@@ -47,7 +44,8 @@ namespace BankDynamic
                     while (dr.Read())
                     {
                         this.welcomeMsg.Text = "Welcome "+dr.GetString(4)+" "+ dr.GetString(5);
-                        this.viewAccNum.Text = dr.GetString(1);
+                        this.accDetAccNum.Text = dr.GetString(1);
+                        this.balance.Text = dr.GetString(2);
                         this.viewEmail.Text = dr.GetString(6);
                         this.viewMobile.Text = dr.GetString(7);
                         this.viewFname.Text = dr.GetString(4);
@@ -77,23 +75,23 @@ namespace BankDynamic
                 this.ackViewProfile.Text = "Kindly fill all the details.";
             else
             {
-                string updateUserDetails = "UPDATE userMaster SET fname = @fname, lname = @lname, address = @address where userId = @userId";
+                string updateUserDetails = "UPDATE userMaster SET fname = @fname, lname = @lname, address = @address, lastModified = @lastModified where userId = @userId";
                 try
                 {
+                    DateTime now = DateTime.Now;
                     cnn.Open();
                     SqlCommand command = new SqlCommand(updateUserDetails, cnn);
                     command.Parameters.AddWithValue("@fname", this.viewFname.Text);
                     command.Parameters.AddWithValue("@lname", this.viewLname.Text);
                     command.Parameters.AddWithValue("@address", this.viewAddress.Text);
+                    command.Parameters.AddWithValue("@lastModified", now.ToLocalTime());
                     command.Parameters.AddWithValue("@userId", userId);
 
                     int result = command.ExecuteNonQuery();
                     if (result < 0)
                         this.ackViewProfile.Text = "Error updating data into Database!";
                     else
-                    {
                         MessageBox.Show("Your details have been updated successfully!!");
-                    }
                 }
                 catch (SqlException ex)
                 {
@@ -105,6 +103,12 @@ namespace BankDynamic
                     cnn.Close();
                 }
             }
+        }
+
+        // logout
+        private void logOut_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            landingForm.ActiveForm.Close();
         }
     }
 }

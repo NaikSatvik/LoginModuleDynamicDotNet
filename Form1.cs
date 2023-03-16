@@ -18,9 +18,7 @@ namespace LoginRegister
     {
         #region SQL
         public static string ConnectionString = @"Data Source = DESKTOP-4VH316L\SQLEXPRESS; Initial Catalog=Bank; Integrated Security=True";
-
         // public static string ConnectionString = @"Data Source = SATVIKNAIK\SQLEXPRESS; Initial Catalog=Bank; Integrated Security=True";
-
         SqlConnection cnn = new SqlConnection(ConnectionString);
         #endregion
 
@@ -34,19 +32,15 @@ namespace LoginRegister
 
         // compute hash code SHA-256
         public static string ComputeSha256Hash(string rawData)
-        {
-            // Create a SHA256   
+        { 
             using (SHA256 sha256Hash = SHA256.Create())
             {
                 // ComputeHash - returns byte array  
                 byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
-
                 // Convert byte array to a string   
                 StringBuilder builder = new StringBuilder();
                 for (int i = 0; i < bytes.Length; i++)
-                {
                     builder.Append(bytes[i].ToString("x2"));
-                }
                 return builder.ToString();
             }
         }
@@ -66,12 +60,9 @@ namespace LoginRegister
                 this.female.Checked == false && 
                 this.other.Checked == false
                 )
-            {
                 return true;
-            } else
-            {
+            else
                 return false;
-            }
         }
 
         // check email id
@@ -103,12 +94,9 @@ namespace LoginRegister
 
                 SqlDataReader dr = command.ExecuteReader();
                 if (dr.HasRows)
-                {
                     status = true;
-                } else
-                {
+                else
                     status = false;
-                }
             }
             catch (SqlException ex)
             {
@@ -142,40 +130,26 @@ namespace LoginRegister
         private void registerBtn_Click(object sender, EventArgs e)
         {
             if (isEmpty() == true)
-            {
                 this.ackRegisterMsg.Text = "Fill all the details.";
-            }
             else if (userExist() == true)
-            {
                 this.ackRegisterMsg.Text = "User already exists. Try Login.";
-            }
             else
             {
                 // checking gender
                 string gender;
                 if (this.male.Checked)
-                {
                     gender = this.male.Text;
-                }
                 else if (this.female.Checked)
-                {
                     gender = this.female.Text;
-                }
                 else if (this.other.Checked)
-                {
                     gender = this.other.Text;
-                }
                 else
-                {
                     gender = "-";
-                }
 
                 // validating email & password and registering the user
                 string password;
                 if (IsValidEmail(this.email.Text) == false)
-                {
                     this.ackRegisterMsg.Text = "Email format didn't matched";
-                }
                 else if (String.Compare(this.password.Text, this.confPassword.Text) == 0)
                 {
                     DateTime now = DateTime.Now;
@@ -218,9 +192,7 @@ namespace LoginRegister
                     }
                 }
                 else
-                {
                     this.ackRegisterMsg.Text = "Password didn't matched. Try Again.";
-                }
             }
         }
 
@@ -234,9 +206,7 @@ namespace LoginRegister
         private void lgnBtn_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(this.lgnAccNum.Text) == true || String.IsNullOrEmpty(this.lgnPassword.Text) == true)
-            {
                 this.lgnAckBox.Text = "Please enter username & password.";
-            }
             else
             {
                 string chkAccNum = "select userId from userMaster where accNumber = @accNumber and pin = CONVERT(binary(50),@pin)";

@@ -121,9 +121,9 @@ namespace LoginRegister
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(149, 103);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 24);
+            this.label3.Size = new System.Drawing.Size(66, 24);
             this.label3.TabIndex = 14;
-            this.label3.Text = "A N O N";
+            this.label3.Text = "A T M";
             // 
             // linkLabel1
             // 
@@ -444,6 +444,7 @@ namespace LoginRegister
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(419, 519);
             this.Controls.Add(this.Tab);
+            this.MaximizeBox = false;
             this.Name = "app";
             this.Text = "Bank";
             this.Tab.ResumeLayout(false);

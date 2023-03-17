@@ -17,8 +17,8 @@ namespace LoginRegister
     public partial class app : Form
     {
         #region SQL
-        public static string ConnectionString = @"Data Source = DESKTOP-4VH316L\SQLEXPRESS; Initial Catalog=Bank; Integrated Security=True";
-        // public static string ConnectionString = @"Data Source = SATVIKNAIK\SQLEXPRESS; Initial Catalog=Bank; Integrated Security=True";
+        // public static string ConnectionString = @"Data Source = DESKTOP-4VH316L\SQLEXPRESS; Initial Catalog=Bank; Integrated Security=True";
+        public static string ConnectionString = @"Data Source = SATVIKNAIK\SQLEXPRESS; Initial Catalog=Bank; Integrated Security=True";
         SqlConnection cnn = new SqlConnection(ConnectionString);
         #endregion
 
